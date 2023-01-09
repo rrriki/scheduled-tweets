@@ -1,24 +1,24 @@
-# README
+# Scheduled Tweets
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  
+This is a small project to learn the basics of Ruby on Rails.
 
-Things you may want to cover:
+It's a small app, that allows to register users, associate Twitter accounts using OmniAuth, and schedule tweets to be posted at a certain time using a background job through Sidekiq.  
 
-* Ruby version
+It was made following [this tutorial](https://www.youtube.com/playlist?list=PLm8ctt9NhMNV75T9WYIrA6m9I_uw7vS56) from [@excid3](@https://github.com/excid3)
 
-* System dependencies
+## Getting started
 
-* Configuration
+Use bundle to install the dependencies and start the server
 
-* Database creation
+```sh
+bundle install
+rails server
+```
+You can then visit the UI at [localhost:3000](http://localhost:3000)
 
-* Database initialization
+You can use the `rails console` command and `bundle exec sidekiq` to test the job (assuming you have created a tweet previously)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh 
+> TweetJob.perform_later(Tweet.last)
+ ```
